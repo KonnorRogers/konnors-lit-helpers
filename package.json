@@ -2,7 +2,6 @@
   "name": "konnors-lit-helpers",
   "version": "0.0.0",
   "description": "Simple lit helpers made by...me (Konnor)",
-  "types": "./exports/index.d.ts",
   "exports": {
     ".": "./exports/index.js",
     "./package.json": "./package.json",
