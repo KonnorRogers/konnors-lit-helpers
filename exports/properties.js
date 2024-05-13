@@ -30,7 +30,7 @@ class Mix {
  */
 
 /**
- * @typedef {Constructable & {properties: LitProperties}} ConstructableWithProperties
+ * @typedef {Constructable & {properties: Record<string, unknown>}} ConstructableWithProperties
  */
 
 /**
@@ -40,8 +40,8 @@ class Mix {
 export function defineablePropertiesMixin (superclass) {
   return class extends superclass {
     /**
-    * @template {ConstructableWithProperties} [T=ConstructableWithProperties]
-    * @template {Record<string, {initialValue: unknown}>} [U=Record<string, {initialValue: unknown}>]
+    * @template {ConstructableWithProperties} T
+    * @template {LitProperties} U
     * @this {T}
     * @param {U} options={}
     */
@@ -55,7 +55,7 @@ export function defineablePropertiesMixin (superclass) {
 
 /**
  * A slightly less ergonomic way to add properties.
- * @template {ConstructableWithProperties} [T=ConstructableWithProperties]
+ * @template {ConstructableWithProperties} T
  * @template [U=LitProperties]
  * @param {T} superclass
  * @param {U} properties

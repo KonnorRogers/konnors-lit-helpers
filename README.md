@@ -14,10 +14,10 @@ npm install konnors-lit-helpers
 
 ```js
 import { LitElement } from "lit"
-import { DefineablePropertiesMixin } from "konnors-lit-helpers/exports/properties.js"
+import { defineablePropertiesMixin } from "konnors-lit-helpers/exports/properties.js"
 
 /** Make a BaseElement, add the mixin. */
-class BaseElement extends DefineablePropertiesMixin(LitElement) {}
+class BaseElement extends defineablePropertiesMixin(LitElement) {}
 
 /** Now we can add properties with ease */
 class MyElement extends BaseElement
@@ -60,10 +60,10 @@ class MyElement extends defineProperties(LitElement, {
 
 ```js
 import { LitElement } from "lit"
-import { DefineablePropertiesMixin } from "konnors-lit-helpers/exports/properties.js"
+import { defineablePropertiesMixin } from "konnors-lit-helpers/exports/properties.js"
 
 /** Make a BaseElement, add the mixin. */
-class BaseElement extends DefineablePropertiesMixin(LitElement) {}
+class BaseElement extends defineablePropertiesMixin(LitElement) {}
 
 const externalProperties = /** @type {const} */ ({
   /** Is my comment preserved?? */
@@ -95,7 +95,7 @@ class MyElement extends BaseElement
   .defineProperties(externalProperties)
 {
   doThing () {
-    // These should show proper intellisense.
+    // These should show proper intellisense and preserve comments.
     this.foo
     this.bar
     this.baz
