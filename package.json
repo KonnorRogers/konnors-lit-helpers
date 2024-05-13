@@ -1,0 +1,57 @@
+{
+  "name": "konnors-lit-helpers",
+  "version": "0.0.0",
+  "description": "Simple lit helpers made by...me (Konnor)",
+  "types": "./exports/index.d.ts",
+  "exports": {
+    ".": "./exports/index.js",
+    "./package.json": "./package.json",
+    "./exports/*.js": "./exports/*.js",
+    "./exports/*": "./exports/*",
+    "./types/*": "./types/*.d.ts"
+  },
+  "type": "module",
+  "files": [
+    "exports",
+    "internal",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "rimraf -g \"./exports/**/*.d.ts\" \"./internal/**/*.d.ts\"",
+    "build": "npm run clean && tsc",
+    "deploy:patch": "npm run build && npm version patch && npm publish && git push --follow-tags",
+    "deploy:minor": "npm run build && npm version minor && npm publish && git push --follow-tags",
+    "deploy:major": "npm run build && npm version major && npm publish && git push --follow-tags",
+    "test": "web-test-runner"
+  },
+  "keywords": [
+    "web-components",
+    "lit"
+  ],
+  "license": "MIT",
+  "repository": "git@github.com:KonnorRogers/konnors-lit-helpers.git",
+  "bugs": {
+    "url": "https://github.com/KonnorRogers/konnors-lit-helpers/issues"
+  },
+  "homepage": "https://github.com/KonnorRogers/konnors-lit-helpers",
+  "author": "KonnorRogers <konnor5456@gmail.com>",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@esm-bundle/chai": "4.3.4-fix.0",
+    "@open-wc/testing-helpers": "^3.0.1",
+    "@web/test-runner": "^0.18.2",
+    "@web/test-runner-playwright": "^0.11.0",
+    "konnors-lit-helpers": "link:",
+    "lit": "^3",
+    "playwright": "^1.44.0",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "lit": "^3"
+  }
+}
