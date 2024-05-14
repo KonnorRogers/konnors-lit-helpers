@@ -18,8 +18,10 @@
     "LICENSE"
   ],
   "scripts": {
-    "clean": "rimraf -g \"./exports/**/*.d.ts\" \"./internal/**/*.d.ts\"",
+    "clean": "rimraf -g \"./exports/**/*.d.ts\" \"./internal/**/*.d.ts\" \"./examples/**/*.d.ts\"",
     "build": "npm run clean && tsc",
+    "watch:cem": "custom-elements-manifest analyze --watch",
+    "build:cem": "custom-elements-manifest analyze",
     "deploy:patch": "npm run build && npm version patch && npm publish && git push --follow-tags",
     "deploy:minor": "npm run build && npm version minor && npm publish && git push --follow-tags",
     "deploy:major": "npm run build && npm version major && npm publish && git push --follow-tags",
@@ -40,6 +42,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.2",
     "@esm-bundle/chai": "4.3.4-fix.0",
     "@open-wc/testing-helpers": "^3.0.1",
     "@web/test-runner": "^0.18.2",
@@ -52,5 +55,6 @@
   },
   "peerDependencies": {
     "lit": "^3"
-  }
+  },
+  "customElements": "custom-elements.json"
 }

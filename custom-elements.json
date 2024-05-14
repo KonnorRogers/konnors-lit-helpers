@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "exports/properties.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "Adds the `defineProperties` static function to your base class.",
+          "name": "defineablePropertiesMixin",
+          "members": [
+            {
+              "kind": "method",
+              "name": "defineProperties",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "options",
+                  "description": "={}",
+                  "type": {
+                    "text": "U"
+                  }
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "name": "superclass",
+              "type": {
+                "text": "ConstructableWithProperties"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "defineProperties",
+          "parameters": [
+            {
+              "name": "superclass",
+              "type": {
+                "text": "T"
+              }
+            },
+            {
+              "name": "properties",
+              "type": {
+                "text": "U"
+              }
+            }
+          ],
+          "description": "A slightly less ergonomic way to add properties."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "defineablePropertiesMixin",
+          "declaration": {
+            "name": "defineablePropertiesMixin",
+            "module": "exports/properties.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "defineProperties",
+          "declaration": {
+            "name": "defineProperties",
+            "module": "exports/properties.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "examples/index.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Make a BaseElement, add the mixin.",
+          "name": "BaseElement",
+          "mixins": [
+            {
+              "name": "defineablePropertiesMixin",
+              "module": "/exports/properties.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true,
+          "members": [
+            {
+              "kind": "method",
+              "name": "defineProperties",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "options",
+                  "description": "={}",
+                  "type": {
+                    "text": "U"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "defineablePropertiesMixin",
+                "module": "exports/properties.js"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MyOtherElement",
+          "mixins": [
+            {
+              "name": "defineProperties",
+              "module": "/exports/properties.js"
+            }
+          ],
+          "superclass": {
+            "name": "BaseElement",
+            "module": "examples/index.js"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "defineProperties",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "options",
+                  "description": "={}",
+                  "type": {
+                    "text": "U"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BaseElement",
+                "module": "examples/index.js"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MyElement",
+          "members": [
+            {
+              "kind": "method",
+              "name": "doThing"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "BaseElement\n  .defineProperties({\n    /** Comments are preserved! Foo does things. */\n    foo: {initialValue: true, type: Boolean},\n    /** I'm a bar. Do note, \"initialValue\" is a made up property that Lit does not support, but needed for type inference */\n    bar: {initialValue: /** @type {null} */ (null)}\n  })\n  .defineProperties({\n    /** And with casting */\n    baz: {initialValue: /** @type {\"blah\"} */ \"blah\"}\n  })\n  .defineProperties",
+              "module": "examples/index.js"
+            }
+          ],
+          "superclass": {
+            "name": "externalProperties",
+            "module": "examples/index.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BaseElement",
+          "declaration": {
+            "name": "BaseElement",
+            "module": "examples/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MyOtherElement",
+          "declaration": {
+            "name": "MyOtherElement",
+            "module": "examples/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MyElement",
+          "declaration": {
+            "name": "MyElement",
+            "module": "examples/index.js"
+          }
+        }
+      ]
+    }
+  ]
+}
