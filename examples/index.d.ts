@@ -1,5 +1,6 @@
 declare const BaseElement_base: {
     new (...args: any[]): {};
+    /** And with casting */
     defineProperties<T extends import("../exports/properties.js").ConstructableWithProperties, U extends Record<string, import("../exports/properties.js").LitProperty>>(this: T, options: U): {
         new (...args: any[]): InstanceType<T> & import("../exports/properties.js").PropertiesMixin<U>;
         prototype: InstanceType<T>;
@@ -11,9 +12,12 @@ declare const BaseElement_base: {
 export class BaseElement extends BaseElement_base {
 }
 declare const MyOtherElement_base: {
-    new (...args: any[]): BaseElement & {
-        foo: boolean;
-    };
+    new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
+        foo: {
+            initialValue: boolean;
+            type: BooleanConstructor;
+        };
+    }>;
     prototype: BaseElement;
     properties: Record<string, unknown> & {
         foo: {
@@ -26,20 +30,43 @@ export class MyOtherElement extends MyOtherElement_base {
     constructor();
 }
 declare const MyElement_base: {
-    new (...args: any[]): BaseElement & {
-        foo: boolean;
-        bar: null;
-    } & {
-        baz: string;
-    } & {
-        readonly yo: "hi";
-    };
-    prototype: BaseElement & {
-        foo: boolean;
-        bar: null;
-    } & {
-        baz: string;
-    };
+    new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
+        /** Comments are preserved! Foo does things. */
+        foo: {
+            initialValue: boolean;
+            type: BooleanConstructor;
+        };
+        /** I'm a bar. Do note, "initialValue" is a made up property that Lit does not support, but needed for type inference */
+        bar: {
+            initialValue: null;
+        };
+    }> & import("../exports/properties.js").PropertiesMixin<{
+        /** And with casting */
+        baz: {
+            initialValue: string;
+        };
+    }> & import("../exports/properties.js").PropertiesMixin<{
+        /** Is my comment preserved?? */
+        readonly yo: {
+            readonly initialValue: "hi";
+        };
+    }>;
+    prototype: BaseElement & import("../exports/properties.js").PropertiesMixin<{
+        /** Comments are preserved! Foo does things. */
+        foo: {
+            initialValue: boolean;
+            type: BooleanConstructor;
+        };
+        /** I'm a bar. Do note, "initialValue" is a made up property that Lit does not support, but needed for type inference */
+        bar: {
+            initialValue: null;
+        };
+    }> & import("../exports/properties.js").PropertiesMixin<{
+        /** And with casting */
+        baz: {
+            initialValue: string;
+        };
+    }>;
     properties: Record<string, unknown> & {
         /** Comments are preserved! Foo does things. */
         foo: {
@@ -62,16 +89,33 @@ declare const MyElement_base: {
         };
     };
 } & {
-    new (...args: any[]): BaseElement & {
-        foo: boolean;
-        bar: null;
-    } & {
-        baz: string;
-    };
-    prototype: BaseElement & {
-        foo: boolean;
-        bar: null;
-    };
+    new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
+        /** Comments are preserved! Foo does things. */
+        foo: {
+            initialValue: boolean;
+            type: BooleanConstructor;
+        };
+        /** I'm a bar. Do note, "initialValue" is a made up property that Lit does not support, but needed for type inference */
+        bar: {
+            initialValue: null;
+        };
+    }> & import("../exports/properties.js").PropertiesMixin<{
+        /** And with casting */
+        baz: {
+            initialValue: string;
+        };
+    }>;
+    prototype: BaseElement & import("../exports/properties.js").PropertiesMixin<{
+        /** Comments are preserved! Foo does things. */
+        foo: {
+            initialValue: boolean;
+            type: BooleanConstructor;
+        };
+        /** I'm a bar. Do note, "initialValue" is a made up property that Lit does not support, but needed for type inference */
+        bar: {
+            initialValue: null;
+        };
+    }>;
     properties: Record<string, unknown> & {
         /** Comments are preserved! Foo does things. */
         foo: {
@@ -89,10 +133,17 @@ declare const MyElement_base: {
         };
     };
 } & {
-    new (...args: any[]): BaseElement & {
-        foo: boolean;
-        bar: null;
-    };
+    new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
+        /** Comments are preserved! Foo does things. */
+        foo: {
+            initialValue: boolean;
+            type: BooleanConstructor;
+        };
+        /** I'm a bar. Do note, "initialValue" is a made up property that Lit does not support, but needed for type inference */
+        bar: {
+            initialValue: null;
+        };
+    }>;
     prototype: BaseElement;
     properties: Record<string, unknown> & {
         /** Comments are preserved! Foo does things. */
