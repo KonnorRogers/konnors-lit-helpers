@@ -25,8 +25,8 @@ class Mix {
  */
 
 /**
- * @template {unknown} [T=unknown]
- * @typedef {T extends LitProperties ? { [Property in keyof T]: T[Property]["initialValue"]; } : {}} PropertiesMixin
+ * @template {LitProperties} [T=LitProperties]
+ * @typedef {{ [Property in keyof T]: T[Property]["initialValue"]; }} PropertiesMixin
  */
 
 /**
@@ -56,7 +56,7 @@ export function defineablePropertiesMixin (superclass) {
 /**
  * A slightly less ergonomic way to add properties.
  * @template {ConstructableWithProperties} T
- * @template [U=LitProperties]
+ * @template {LitProperties} [U=LitProperties]
  * @param {T} superclass
  * @param {U} properties
  * @example

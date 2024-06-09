@@ -3,7 +3,7 @@ import { LitElement } from "lit"
 import { defineProperties, defineablePropertiesMixin } from "../exports/properties.js"
 
 /** Make a BaseElement, add the mixin. */
-class BaseElement extends defineablePropertiesMixin(LitElement) {}
+export class BaseElement extends defineablePropertiesMixin(LitElement) {}
 
 const externalProperties = /** @type {const} */ ({
   /** Is my comment preserved?? */
@@ -12,7 +12,7 @@ const externalProperties = /** @type {const} */ ({
   }
 })
 
-class MyOtherElement extends defineProperties(BaseElement, {
+export class MyOtherElement extends defineProperties(BaseElement, {
   foo: { initialValue: true, type: Boolean }
 }) {
   constructor () {
@@ -21,7 +21,7 @@ class MyOtherElement extends defineProperties(BaseElement, {
   }
 }
 
-class MyElement extends BaseElement
+export class MyElement extends BaseElement
   .defineProperties({
     /** Comments are preserved! Foo does things. */
     foo: {initialValue: true, type: Boolean},
