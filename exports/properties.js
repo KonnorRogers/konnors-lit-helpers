@@ -52,7 +52,6 @@ export function defineablePropertiesMixin (superclass) {
   }
 }
 
-
 /**
  * A slightly less ergonomic way to add properties.
  * @template {ConstructableWithProperties} T
@@ -74,17 +73,19 @@ export function defineProperties (superclass, properties) {
   } & T} */ (/** @type {unknown} */ (superclass))
 
   const finalClass = class PropertiesClass extends superclass {
-    static properties = {
-      ...superclass.properties,
-      ...properties,
-    }
+      static properties = {
+        ...superclass.properties,
+        ...properties,
+      }
 
-    /** @param {any[]} args  */
-    constructor (...args) {
-      super(...args)
-      Object.entries(/** @type {object} */ (properties)).forEach(([name, properties]) => {
-        /** @type {any} */ (this)[name] = properties.initialValue
-      })
+      /** @param {any[]} args  */
+      constructor (...args) {
+        super(...args)
+
+        for (const name in properties) {
+          const { initialValue } = properties[name];
+          /** @type {any} */(this)[name] = initialValue
+        }
     }
   }
 

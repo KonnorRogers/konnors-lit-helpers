@@ -13,6 +13,11 @@ const externalProperties = /** @type {const} */ ({
 })
 
 export class MyOtherElement extends defineProperties(BaseElement, {
+  /**
+   * Is this preserved??
+   * @attr foo
+   * @property foo
+   */
   foo: { initialValue: true, type: Boolean }
 }) {
   constructor () {
@@ -23,7 +28,9 @@ export class MyOtherElement extends defineProperties(BaseElement, {
 
 export class MyElement extends BaseElement
   .defineProperties({
-    /** Comments are preserved! Foo does things. */
+    /**
+     * Comments are preserved! Foo does things.
+     */
     foo: {initialValue: true, type: Boolean},
     /** I'm a bar. Do note, "initialValue" is a made up property that Lit does not support, but needed for type inference */
     bar: {initialValue: /** @type {null} */ (null)}

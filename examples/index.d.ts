@@ -1,6 +1,5 @@
 declare const BaseElement_base: {
     new (...args: any[]): {};
-    /** And with casting */
     defineProperties<T extends import("../exports/properties.js").ConstructableWithProperties, U extends Record<string, import("../exports/properties.js").LitProperty>>(this: T, options: U): {
         new (...args: any[]): InstanceType<T> & import("../exports/properties.js").PropertiesMixin<U>;
         prototype: InstanceType<T>;
@@ -13,6 +12,11 @@ export class BaseElement extends BaseElement_base {
 }
 declare const MyOtherElement_base: {
     new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
+        /**
+         * Is this preserved??
+         * @attr foo
+         * @property foo
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -20,6 +24,11 @@ declare const MyOtherElement_base: {
     }>;
     prototype: BaseElement;
     properties: Record<string, unknown> & {
+        /**
+         * Is this preserved??
+         * @attr foo
+         * @property foo
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -31,7 +40,9 @@ export class MyOtherElement extends MyOtherElement_base {
 }
 declare const MyElement_base: {
     new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -52,7 +63,9 @@ declare const MyElement_base: {
         };
     }>;
     prototype: BaseElement & import("../exports/properties.js").PropertiesMixin<{
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -68,7 +81,9 @@ declare const MyElement_base: {
         };
     }>;
     properties: Record<string, unknown> & {
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -90,7 +105,9 @@ declare const MyElement_base: {
     };
 } & {
     new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -106,7 +123,9 @@ declare const MyElement_base: {
         };
     }>;
     prototype: BaseElement & import("../exports/properties.js").PropertiesMixin<{
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -117,7 +136,9 @@ declare const MyElement_base: {
         };
     }>;
     properties: Record<string, unknown> & {
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -134,7 +155,9 @@ declare const MyElement_base: {
     };
 } & {
     new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
@@ -146,7 +169,9 @@ declare const MyElement_base: {
     }>;
     prototype: BaseElement;
     properties: Record<string, unknown> & {
-        /** Comments are preserved! Foo does things. */
+        /**
+         * Comments are preserved! Foo does things.
+         */
         foo: {
             initialValue: boolean;
             type: BooleanConstructor;
