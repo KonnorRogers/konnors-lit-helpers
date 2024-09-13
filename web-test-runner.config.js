@@ -1,5 +1,5 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
-// import { esbuildPlugin } from '@web/dev-server-esbuild';
+import { esbuildPlugin } from '@web/dev-server-esbuild';
 
 /** @type {import("@web/test-runner").TestRunnerConfig} */
 export default {
@@ -15,6 +15,7 @@ export default {
     }
   },
   plugins: [
+    esbuildPlugin({ target: "auto" })
 
   ],
   browsers: [
