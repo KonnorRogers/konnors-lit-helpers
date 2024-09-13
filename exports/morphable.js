@@ -7,7 +7,7 @@
 
 /**
   * @typedef {{
-    elementProperties: Map<string | symbol | number, Record<string, unknown> & { reflect?: boolean }>,
+    elementProperties: Map<string | symbol | number, (unknown & { reflect?: boolean })>,
   }} LitLike
   */
 
