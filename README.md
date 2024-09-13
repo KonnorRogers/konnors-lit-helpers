@@ -104,3 +104,40 @@ class MyElement extends BaseElement
 }
 ```
 
+## Morphable
+
+I have a blog post about "morphing" + web components here:
+
+<https://www.konnorrogers.com/posts/2024/designing-web-components-for-morphing>
+
+And a followup blog post here of how this mixing came to be:
+
+<https://www.konnorrogers.com/posts/2024/surviving-the-morph-with-lit>
+
+Basically, what this helper does it make your properties which `reflect` and their initial value in their `constructor` is **NOT** `null` or `undefined`, then it will record those initial properties and set your component back to them when the attribute or property gets set to `null` or `undefined` some time in the future.
+
+### How to use
+
+```js
+import { Morphable } from "konnors-lit-helpers/exports/morphable.js"
+import { html, LitElement } from "lit"
+
+class MyElement extends Morphable(LitElement) {
+  static properties = {
+    // Has to reflect
+    foo: { reflect: true }
+  }
+  constructor () {
+    super()
+
+    // Initial value cannot be `null` or `undefined`
+    this.foo = "bar"
+  }
+
+  render () {
+    return html`<slot></slot>`
+  }
+}
+```
+
+Now `myElement.foo` will never be `null` or `undefined`, even when somebody does something like `myElement.foo = null` or `myElement.removeAttribute("foo")`
