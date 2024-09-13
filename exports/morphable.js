@@ -7,7 +7,7 @@
 
 /**
   * @typedef {{
-    elementProperties: Map<string, Record<string, unknown> & { reflect?: boolean }>,
+    elementProperties: Map<string | symbol | number, Record<string, unknown> & { reflect?: boolean }>,
   }} LitLike
   */
 
@@ -27,7 +27,7 @@ export function Morphable (superclass) {
 
       /**
        * Store the constructor value of all `static properties = {}` and `@property()`
-       * @type {Map<string, unknown>}
+       * @type {Map<string | number | symbol, unknown>}
        */
       this.initialReflectedProperties = new Map();
     }
@@ -39,7 +39,7 @@ export function Morphable (superclass) {
      */
     attributeChangedCallback(name, oldValue, newValue) {
       if (!this.#hasRecordedInitialProperties) {
-        const self = /** @type {Record<string, unknown>} */ (this);
+        const self = /** @type {Record<string | number | symbol, unknown>} */ (this);
         ;/** @type {T} */ (this.constructor).elementProperties.forEach(
           (obj, prop) => {
             if (obj.reflect && self[prop] != null) {
@@ -63,7 +63,7 @@ export function Morphable (superclass) {
       super.willUpdate?.(changedProperties);
 
       // Silly type gymnastics to appease the compiler.
-      const self = /** @type {Record<string, unknown>} */ (this);
+      const self = /** @type {Record<string | number | symbol, unknown>} */ (this);
 
       // Run the morph fixing *after* willUpdate.
       this.initialReflectedProperties.forEach((value, prop) => {

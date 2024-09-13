@@ -1,3 +1,4 @@
+// @ts-check
 import { assert } from "@esm-bundle/chai"
 import { fixture } from "@open-wc/testing-helpers"
 import { Morphable } from "konnors-lit-helpers/exports/morphable.js"
