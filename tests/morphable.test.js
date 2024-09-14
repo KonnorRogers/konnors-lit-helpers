@@ -71,3 +71,33 @@ test("Should work when attribute is set at creation", async () => {
   assert.equal(el.getAttribute("foo"), "not-bar")
 })
 
+
+test("Should work when attribute is set at creation", async () => {
+  const el = await fixture(html`<subclass-element foo="yo"></subclass-element>`)
+
+  assert.equal(el.foo, "yo")
+  assert.equal(el.getAttribute("foo"), "yo")
+
+  el.removeAttribute("foo")
+  await el.updateComplete
+  assert.equal(el.foo, "not-bar")
+  assert.equal(el.getAttribute("foo"), "not-bar")
+})
+
+test("Should work when property is set to null", async () => {
+  const el = await fixture(html`<subclass-element></subclass-element>`)
+
+  assert.equal(el.foo, "not-bar")
+  assert.equal(el.getAttribute("foo"), "not-bar")
+
+  el.foo = "blah"
+  await el.updateComplete
+  assert.equal(el.foo, "blah")
+  assert.equal(el.getAttribute("foo"), "blah")
+
+  el.foo = null
+  await el.updateComplete
+  assert.equal(el.foo, "not-bar")
+  assert.equal(el.getAttribute("foo"), "not-bar")
+
+})

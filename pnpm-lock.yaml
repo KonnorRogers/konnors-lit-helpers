@@ -17,6 +17,9 @@ importers:
       '@open-wc/testing-helpers':
         specifier: ^3.0.1
         version: 3.0.1
+      '@types/mocha':
+        specifier: ^10.0.8
+        version: 10.0.8
       '@web/dev-server-esbuild':
         specifier: ^1.0.2
         version: 1.0.2
@@ -433,6 +436,9 @@ packages:
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
+
+  '@types/mocha@10.0.8':
+    resolution: {integrity: sha512-HfMcUmy9hTMJh66VNcmeC9iVErIZJli2bszuXc6julh5YGuRb/W5OnkHjwLNYdFlMis0sY3If5SEAp+PktdJjw==}
 
   '@types/node@20.12.11':
     resolution: {integrity: sha512-vDg9PZ/zi+Nqp6boSOT7plNuthRugEKixDv5sFTIpkE89MmNtEArAShI4mxuX2+UrLEe9pxC1vm2cjm9YlWbJw==}
@@ -2094,6 +2100,8 @@ snapshots:
       '@types/node': 20.12.11
 
   '@types/mime@1.3.5': {}
+
+  '@types/mocha@10.0.8': {}
 
   '@types/node@20.12.11':
     dependencies:
