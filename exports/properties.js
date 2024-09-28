@@ -30,15 +30,16 @@ class Mix {
  */
 
 /**
- * @typedef {Constructable & {properties: Record<string, unknown>}} ConstructableWithProperties
+ * @typedef {Constructable & {properties?: Record<string, unknown>}} ConstructableWithProperties
  */
 
 /**
  * Adds the `defineProperties` static function to your base class.
- * @param {ConstructableWithProperties} superclass
+ * @template {ConstructableWithProperties} T
+ * @param {T} superclass
  */
 export function defineablePropertiesMixin (superclass) {
-  return class extends superclass {
+  return class __DefineablePropertiesMixin__ extends superclass {
     /**
     * @template {ConstructableWithProperties} T
     * @template {LitProperties} U

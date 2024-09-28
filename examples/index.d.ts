@@ -5,8 +5,8 @@ declare const BaseElement_base: {
         prototype: InstanceType<T>;
         properties: T["properties"] & U;
     } & T;
-    properties: Record<string, unknown>;
-};
+    properties?: Record<string, unknown> | undefined;
+} & typeof LitElement;
 /** Make a BaseElement, add the mixin. */
 export class BaseElement extends BaseElement_base {
 }
@@ -23,7 +23,7 @@ declare const MyOtherElement_base: {
         };
     }>;
     prototype: BaseElement;
-    properties: Record<string, unknown> & {
+    properties: Record<string, unknown> & import("lit").PropertyDeclarations & {
         /**
          * Is this preserved??
          * @attr foo
@@ -36,7 +36,6 @@ declare const MyOtherElement_base: {
     };
 } & typeof BaseElement;
 export class MyOtherElement extends MyOtherElement_base {
-    constructor();
 }
 declare const MyElement_base: {
     new (...args: any[]): BaseElement & import("../exports/properties.js").PropertiesMixin<{
@@ -80,7 +79,7 @@ declare const MyElement_base: {
             initialValue: string;
         };
     }>;
-    properties: Record<string, unknown> & {
+    properties: Record<string, unknown> & import("lit").PropertyDeclarations & {
         /**
          * Comments are preserved! Foo does things.
          */
@@ -135,7 +134,7 @@ declare const MyElement_base: {
             initialValue: null;
         };
     }>;
-    properties: Record<string, unknown> & {
+    properties: Record<string, unknown> & import("lit").PropertyDeclarations & {
         /**
          * Comments are preserved! Foo does things.
          */
@@ -168,7 +167,7 @@ declare const MyElement_base: {
         };
     }>;
     prototype: BaseElement;
-    properties: Record<string, unknown> & {
+    properties: Record<string, unknown> & import("lit").PropertyDeclarations & {
         /**
          * Comments are preserved! Foo does things.
          */
@@ -185,4 +184,5 @@ declare const MyElement_base: {
 export class MyElement extends MyElement_base {
     doThing(): void;
 }
+import { LitElement } from "lit";
 export {};
