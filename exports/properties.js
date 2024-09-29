@@ -6,7 +6,7 @@
 
 /**
  * This is an internal class used for getting better types.
- * @template [T=Constructable]
+ * @template {Constructable} [T=Constructable]
  */
 class Mix {
   /**
@@ -17,7 +17,6 @@ class Mix {
     this.ctor = ctor
   }
 }
-
 
 /**
  * @typedef {import("lit").PropertyDeclaration & {initialValue: unknown}} LitProperty
@@ -30,18 +29,24 @@ class Mix {
  */
 
 /**
- * @typedef {Constructable & {properties?: Record<string, unknown>}} ConstructableWithProperties
- */
+  * @typedef {Object} LitLike
+  * @property {typeof import("lit").LitElement["properties"]} properties
+  */
+
+/**
+  * @template T
+  * @typedef {{ new (...args: any[]): T}} GenericConstructable
+  */
 
 /**
  * Adds the `defineProperties` static function to your base class.
- * @template {ConstructableWithProperties} T
+ * @template {GenericConstructable<HTMLElement> & LitLike} T
  * @param {T} superclass
  */
 export function defineablePropertiesMixin (superclass) {
   return class __DefineablePropertiesMixin__ extends superclass {
     /**
-    * @template {ConstructableWithProperties} T
+    * @template {GenericConstructable<HTMLElement> & LitLike} T
     * @template {LitProperties} U
     * @this {T}
     * @param {U} options={}
@@ -55,7 +60,7 @@ export function defineablePropertiesMixin (superclass) {
 
 /**
  * A slightly less ergonomic way to add properties.
- * @template {ConstructableWithProperties} T
+ * @template {GenericConstructable<HTMLElement> & LitLike} T
  * @template {LitProperties} [U=LitProperties]
  * @param {T} superclass
  * @param {U} properties
